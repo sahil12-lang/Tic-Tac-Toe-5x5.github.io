@@ -32,13 +32,10 @@ let isXChance = true;
 let completedSeq = [];
 let xBlocks = [""];
 let oBlocks = [""];
-// let gameState = [];
+
 function App() {
   const [gameState, updateGameSet] = useState(initialState);
   const [gameWon, setWinner] = useState(false);
-  const [sequence, updateSequence] = useState(xBlocks, oBlocks);
-  const [winner, updatewinner] = useState(xBlocks, oBlocks);
-  const [filled, updatefilled] = useState([]);
   const [_x, setX] = useState(0);
   const [_o, setO] = useState(0);
 
@@ -63,19 +60,11 @@ function App() {
       if (winner) {
         console.log("alert coming");
         setWinner(true);
-        alert(`winner winner Chicken DINNER! ${winner} has won `);
-        // checkSequence();
-
-        // completedSeq=[];
-        // updateGameSet(initialState);
-
-        // xBlocks = [];
-        // oBlocks = [];
+        alert(`yayy!! ${winner} has won `);
+       
       } else {
         checkIfTie();
-        //  (xBlocks = []);
-        //  (oBlocks = []);
-        // updateSequence(initialState);
+       
       }
     }, 300);
   }, [gameState]);
@@ -94,35 +83,19 @@ function App() {
       console.log("o sequences", _o);
       setTimeout(() => {
         if (_x > _o) {
-          alert(`X wins`);
-          // checkSequence();
+          alert(`X wins with more sequence`);
           console.log("x coming!", _x);
-          // updateGameSet(setO, setX);
         } else if (_x < _o) {
-          alert(`O wins`);
-          // checkSequence();
+          alert(`O wins with more sequence`);
           console.log("o coming!", _o);
-
-          // updateGameSet(setO, setX)
-        } else if (_x === _o) {
-          alert(`Draw`);
-          // checkSequence();
-          // updateGameSet(setO, setX);
+        } else if (filled) {
+          if (_x === _o);
+          {
+            alert(`Draw`);
+          }
         }
       }, 500);
-      // if (_x > _o) {
-      //   alert(`X wins`)
-      //   // updateGameSet(setO, setX);
-      // }
-      // else if (_x < _o){
-      //   alert(`O wins`)
-      //   // updateGameSet(setO, setX)
-      // }
-      // else if (_x === _o){
-      //   alert(`Draw`)
-      //   // updateGameSet(setO, setX);
-      // }
-    }
+    } 
   };
 
   const checkWinner = () => {
@@ -150,9 +123,7 @@ function App() {
         gameState[a] === gameState[e]
       ) {
         return gameState[a];
-        //  xBlocks = [];
-        //  oBlocks = [];
-        // const initialState = [];
+      
       }
     }
     return null;
@@ -568,15 +539,6 @@ function App() {
           setO(0);
           setX(0);
           setWinner(false);
-          // checkWinner (useEffect),
-          // (checkWinner,checkSequence,SquareComponent,gameState,useEffect),
-          // winner(onSquareClicked),
-          // sequence(''),
-          // SquareComponent,
-
-          //
-          // xBlocks,
-          // oBlocks
         }}
       >
         Reset Game
